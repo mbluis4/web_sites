@@ -1,13 +1,141 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
+
+/*
+Variables
+*/
+
+:root {
+  --clr-1: #fec5bb;
+  --clr-2: #fcd5ce;
+  --clr-3: #fae1dd;
+  --clr-4: #f8edeb;
+  --clr-5: #e8e8e4;
+  --clr-6: #d8e2dc;
+  --clr-7: #ece4db;
+  --clr-8: #ffe5d9;
+  --clr-9: #ffd7ba;
+  --clr-10: #fec89a;
+  --transition: all 0.3s linear;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/*
+Global Styles
+*/
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Montserrat, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--clr-1);
+}
+
+.App {
+  background-color: var(--clr-3);
+  margin: 2rem;
+  padding: 2em;
+  height: 100vh;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.links {
+  display: block;
+}
+
+.nav-toggle {
+  font-size: 1.5rem;
+  color: #252525;
+  background: transparent;
+  border-color: transparent;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.nav-toggle:hover {
+  color: var(--clr-primary-1);
+  transform: rotate(90deg);
+}
+
+.links-container,
+.contact-link {
+  overflow: hidden;
+}
+
+li,
+.contact-link {
+  display: block;
+  margin-right: 2em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.01rem;
+  font-weight: 700;
+  color: black;
+  list-style: none;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("./images/hero_blur.jpg");
+  background-size: cover;
+  background-blend-mode: multiply;
+  min-height: 50vh;
+}
+
+.hero-title,
+.hero-subtitle {
+  letter-spacing: 0.1px;
+  color: rgb(255, 249, 253);
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  z-index: 10;
+  margin-bottom: 3rem;
+}
+
+.hero-subtitle {
+  font-size: 1rem;
+  margin-left: 10rem;
+}
+
+@media screen and (min-width: 800px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .links {
+    display: flex;
+  }
+  .links-container,
+  .contact-link {
+    height: auto !important;
+  }
+  .nav-center {
+    max-width: 1170px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+  }
 }
