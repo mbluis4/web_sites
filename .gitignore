@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 /resources
+/src/photos
 
 # testing
 /coverage
