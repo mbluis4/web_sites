@@ -1,30 +1,72 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
+import { MdSoap } from "react-icons/md";
 import { FaBars } from "react-icons/fa";
-import { links } from "../data";
+
 import { Link } from "react-router-dom";
 
 const Header = () => {
   const [showLinks, setShowLinks] = useState(false);
-  const linksContainerRef = useRef(null);
-  const linksRef = useRef(null);
-  const contactRef = useRef(null);
 
-  useEffect(() => {
-    const linksHeight = linksRef.current.getBoundingClientRect().height;
-    if (showLinks) {
-      contactRef.current.style.height = `${linksHeight}px`;
-      linksContainerRef.current.style.height = `${linksHeight}px`;
-    } else {
-      contactRef.current.style.height = "0px";
-      linksContainerRef.current.style.height = "0px";
-    }
-  }, [showLinks]);
-
-  const toggleLinks = () => {
-    setShowLinks(!showLinks);
-  };
   return (
-    <nav>
+    <>
+      <nav>
+        <div className="flex justify-between items-center max-w-7xl bg-red-300 rounded mx-auto py-2 px-2">
+          <div className="flex">
+            <div className="flex items-center py-2">
+              <div className="mr-2 text-xl">
+                <MdSoap />
+              </div>
+              <div className="hidden md:flex space-x-3 text-white">
+                <Link to="/" className="hover:text-gray-800">
+                  Inicio
+                </Link>
+                <Link to="products" className="hover:text-gray-800">
+                  Productos
+                </Link>
+                <Link to="gallery" className="hover:text-gray-800">
+                  Galería
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="hidden md:flex items-center mr-1 bg-red-400 text-rose-800 rounded hover:text-gray-800">
+            <Link to="contact" className="py-1 px-3">
+              Contacto
+            </Link>
+          </div>
+
+          <div className="md:hidden flex text-lg">
+            <button onClick={() => setShowLinks((prev) => !prev)}>
+              <FaBars />
+            </button>
+          </div>
+        </div>
+        {showLinks && (
+          <div className="md:hidden flex flex-col text-gray-800">
+            <Link to="/" className="hover:text-gray-800">
+              Inicio
+            </Link>
+            <Link to="products" className="hover:text-gray-800">
+              Productos
+            </Link>
+            <Link to="gallery" className="hover:text-gray-800">
+              Galería
+            </Link>
+            <Link to="contact" className="">
+              Contacto
+            </Link>
+          </div>
+        )}
+      </nav>
+    </>
+  );
+};
+
+export default Header;
+
+{
+  /* <nav>
       <div className="nav-center">
         <div className="nav-header">
           <h2>Logo</h2>
@@ -50,8 +92,16 @@ const Header = () => {
           </Link>
         </div>
       </div>
-    </nav>
-  );
-};
+    </nav> */
+}
 
-export default Header;
+/*       useEffect(() => {
+        const linksHeight = linksRef.current.getBoundingClientRect().height;
+        if (showLinks) {
+          contactRef.current.style.height = `${linksHeight}px`;
+          linksContainerRef.current.style.height = `${linksHeight}px`;
+        } else {
+          contactRef.current.style.height = "0px";
+          linksContainerRef.current.style.height = "0px";
+        }
+      }, [showLinks]); */

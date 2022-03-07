@@ -14,13 +14,12 @@ const Contact = () => {
       ...prevForm,
       [name]: value,
     }));
-    //console.log(name, value);
   };
 
   return (
     <div className="bg-white space-y-10 py-6 shadow-lg rounded-lg">
       <form action="#" className="py-2 px-6">
-        <label for="name">Nombre</label>
+        <label htmlFor="name">Nombre</label>
         <input
           type="text"
           name="name"
@@ -28,7 +27,7 @@ const Contact = () => {
           onChange={handleChange}
           className="mt-1 mb-2 border-2 py-1 rounded-lg shadow-sm w-full"
         ></input>
-        <label for="email">Email</label>
+        <label htmlFor="email">Email</label>
         <input
           type="email"
           name="email"
@@ -37,7 +36,7 @@ const Contact = () => {
           className="my-1 border-2 py-1 rounded-lg shadow-sm w-full"
           required
         ></input>
-        <label for="message">Mensaje</label>
+        <label htmlFor="message">Mensaje</label>
         <textarea
           type="text"
           placeholder="mensaje"
