@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { MdSoap } from "react-icons/md";
+import logo from "../images/logo.png";
 import { FaBars } from "react-icons/fa";
 
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const Header = () => {
   const [showLinks, setShowLinks] = useState(false);
@@ -14,7 +14,7 @@ const Header = () => {
           <div className="flex">
             <div className="flex items-center py-2">
               <div className="mr-2 text-xl">
-                <MdSoap />
+                <img src={logo} className="w-10"></img>
               </div>
               <div className="hidden md:flex space-x-3 text-white">
                 <Link to="/" className="hover:text-gray-800">
@@ -25,6 +25,9 @@ const Header = () => {
                 </Link>
                 <Link to="gallery" className="hover:text-gray-800">
                   Galería
+                </Link>
+                <Link to="upload" className="hover:text-gray-800">
+                  Upload
                 </Link>
               </div>
             </div>
@@ -59,6 +62,7 @@ const Header = () => {
           </div>
         )}
       </nav>
+      <Outlet />
     </>
   );
 };
