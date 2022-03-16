@@ -26,9 +26,9 @@ const Header = () => {
                 <Link to="gallery" className="hover:text-gray-800">
                   Galería
                 </Link>
-                <Link to="upload" className="hover:text-gray-800">
+                {/* <Link to="upload" className="hover:text-gray-800">
                   Upload
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>

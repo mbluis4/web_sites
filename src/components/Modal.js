@@ -15,9 +15,7 @@ const Modal = ({ selected, setSelected }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
-          <motion.img
-            initial={{ y: "-100vh" }}
-            animate={{ y: 0 }}
+          <img
             src={selected}
             alt="enlarged"
             className="relative block max-h-1/3 max-w-1/3 my-32 mx-auto shadow-lg border-white border-4"

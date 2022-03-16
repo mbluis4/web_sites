@@ -23,7 +23,7 @@ function App() {
             element={<Gallery selected={selected} setSelected={setSelected} />}
           />
           <Route path="about" element={<About />} />
-          <Route path="upload" element={<UploadFiles />} />
+          {/* <Route path="upload" element={<UploadFiles />} /> */}
           <Route path="contact" element={<Contact />} />
         </Route>
       </Routes>

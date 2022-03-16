@@ -39,7 +39,7 @@ body {
   font-family: Montserrat, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--clr-1);
+  background-color: var(--clr-4);
 }
 
 .App {
