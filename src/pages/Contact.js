@@ -17,7 +17,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="bg-white space-y-10 py-6 shadow-lg rounded-lg">
+    <div className="max-w-1/700  bg-white space-y-10 py-6 shadow-lg rounded-lg border-slate-700 border-2 mx-auto">
       <form action="#" className="py-2 px-6">
         <label htmlFor="name">Nombre</label>
         <input

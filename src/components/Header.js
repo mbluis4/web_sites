@@ -10,13 +10,13 @@ const Header = () => {
   return (
     <>
       <nav>
-        <div className="flex justify-between items-center max-w-7xl bg-red-300 rounded mx-auto py-2 px-2">
+        <div className="flex justify-between items-center max-w-7xl bg-red-300 rounded mx-auto py-2 px-2 shadow-sm">
           <div className="flex">
             <div className="flex items-center py-2">
               <div className="mr-2 text-xl">
                 <img src={logo} className="w-10"></img>
               </div>
-              <div className="hidden md:flex space-x-3 text-white">
+              <div className="hidden sm:flex space-x-3 text-white">
                 <Link to="/" className="hover:text-gray-800">
                   Inicio
                 </Link>
@@ -33,20 +33,20 @@ const Header = () => {
             </div>
           </div>
 
-          <div className="hidden md:flex items-center mr-1 bg-red-400 text-rose-800 rounded hover:text-gray-800">
+          <div className="hidden sm:flex items-center bold mr-1 bg-red-400 text-rose-800 rounded hover:text-gray-800">
             <Link to="contact" className="py-1 px-3">
               Contacto
             </Link>
           </div>
 
-          <div className="md:hidden flex text-lg">
+          <div className="sm:hidden flex text-lg">
             <button onClick={() => setShowLinks((prev) => !prev)}>
               <FaBars />
             </button>
           </div>
         </div>
         {showLinks && (
-          <div className="md:hidden flex flex-col text-gray-800">
+          <div className="sm:hidden flex flex-col text-gray-800">
             <Link to="/" className="hover:text-gray-800">
               Inicio
             </Link>
