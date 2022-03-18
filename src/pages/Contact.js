@@ -48,7 +48,7 @@ const Contact = () => {
         ></textarea>
         <button
           type="Submit"
-          className="block border-2 shadow-sm mx-auto px-6 py-2 rounded-lg mt-2"
+          className="block border-2 shadow-sm mx-auto px-6 py-2 rounded-lg mt-2 hover:bg-slate-400 hover:text-white"
         >
           Enviar
         </button>

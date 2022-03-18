@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <>
       <nav>
-        <div className="flex justify-between items-center max-w-7xl bg-red-300 rounded mx-auto py-2 px-2 shadow-sm">
+        <div className="flex justify-between items-center max-w-7xl bg-red-300 rounded mx-auto pb-2 px-2 shadow-sm opacity-90">
           <div className="flex">
             <div className="flex items-center py-2">
               <div className="mr-2 text-xl">
@@ -33,7 +33,7 @@ const Header = () => {
             </div>
           </div>
 
-          <div className="hidden sm:flex items-center bold mr-1 bg-red-400 text-rose-800 rounded hover:text-gray-800">
+          <div className="hidden sm:flex items-center mr-1 bg-red-400 text-rose-800 rounded hover:text-gray-800">
             <Link to="contact" className="py-1 px-3">
               Contacto
             </Link>
@@ -46,17 +46,29 @@ const Header = () => {
           </div>
         </div>
         {showLinks && (
-          <div className="sm:hidden flex flex-col text-gray-800">
-            <Link to="/" className="hover:text-gray-800">
+          <div className="sm:hidden flex flex-col text-slate-300 fixed right-0 bg-slate-500 h-auto z-10">
+            <Link
+              to="/"
+              className="hover:text-gray-800"
+              onClick={() => setShowLinks(false)}
+            >
               Inicio
             </Link>
-            <Link to="products" className="hover:text-gray-800">
+            <Link
+              to="products"
+              className="hover:text-gray-800"
+              onClick={() => setShowLinks(false)}
+            >
               Productos
             </Link>
-            <Link to="gallery" className="hover:text-gray-800">
+            <Link
+              to="gallery"
+              className="hover:text-gray-800"
+              onClick={() => setShowLinks(false)}
+            >
               Galería
             </Link>
-            <Link to="contact" className="">
+            <Link to="contact" className="" onClick={() => setShowLinks(false)}>
               Contacto
             </Link>
           </div>
