@@ -13,7 +13,7 @@ import { useState } from "react";
 function App() {
   const [selected, setSelected] = useState(null);
   return (
-    <div className="App">
+    <div className="App h-screen">
       <Routes>
         <Route path="/" element={<Header />}>
           <Route index element={<Hero />} />

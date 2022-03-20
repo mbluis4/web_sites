@@ -2,7 +2,7 @@ import useStorage from "../hooks/useStorage";
 
 const ProgressBar = ({ files, setFiles }) => {
   const { url, progress } = useStorage(files);
-  //console.log(url);
+  console.log("file uploaded");
   return <></>;
 };
 

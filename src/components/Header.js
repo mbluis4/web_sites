@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import logo from "../images/logo.png";
 import { FaBars } from "react-icons/fa";
 
@@ -6,6 +6,13 @@ import { Link, Outlet } from "react-router-dom";
 
 const Header = () => {
   const [showLinks, setShowLinks] = useState(false);
+  const navRef = useRef(null);
+
+  useEffect(() => {
+    showLinks && navRef.current.classList.toggle("nav-active");
+
+    return;
+  }, [showLinks]);
 
   return (
     <>
@@ -46,7 +53,11 @@ const Header = () => {
           </div>
         </div>
         {showLinks && (
-          <div className="sm:hidden flex flex-col text-slate-300 fixed right-0 bg-slate-500 h-auto z-10">
+          <div
+            className="navi flex flex-col items-center py-5 space-y-2 text-slate-300 
+          fixed right-0 bg-slate-500 h-screen w-1/2 z-10 translate-x-full ease-in duration-300"
+            ref={navRef}
+          >
             <Link
               to="/"
               className="hover:text-gray-800"
