@@ -1,6 +1,8 @@
 import { useState } from "react";
+import EmailModal from "../components/EmailModal";
 
 const Contact = () => {
+  const [emailSent, setEmailSent] = useState(false);
   const [form, setForm] = useState([
     {
       name: "",
@@ -15,10 +17,14 @@ const Contact = () => {
       [name]: value,
     }));
   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setEmailSent(true);
+  };
 
   return (
     <div className="max-w-1/700  bg-white space-y-10 py-6 shadow-lg rounded-lg border-slate-700 border-2 mx-auto">
-      <form action="#" className="py-2 px-6">
+      <form onSubmit={handleSubmit} action="#" className="py-2 px-6">
         <label htmlFor="name">Nombre</label>
         <input
           type="text"
@@ -53,6 +59,8 @@ const Contact = () => {
           Enviar
         </button>
       </form>
+
+      <EmailModal emailSent={emailSent} setEmailSent={setEmailSent} />
     </div>
   );
 };

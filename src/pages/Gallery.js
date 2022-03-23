@@ -3,17 +3,17 @@ import Image from "../components/Image";
 import Modal from "../components/Modal";
 import Loading from "../components/Loading";
 import useImages from "../hooks/useImages";
+import React from "react";
 
 const Gallery = ({ selected, setSelected }) => {
-  const { image, setPage, setLastVisible, loading, page } = useImages();
+  const { image, setPage, setLastVisible, loading, page, setBack } =
+    useImages();
 
   const handleNext = () => {
     setPage((prev) => prev + 1);
-    console.log("next page");
   };
   const handlePrev = () => {
-    setLastVisible((prev) => prev - 30);
-    setPage((prev) => prev - 1);
+    setBack((prev) => !prev);
   };
 
   const imageGrid = image.map((image) => {
@@ -22,9 +22,10 @@ const Gallery = ({ selected, setSelected }) => {
 
   return (
     <>
-      {!loading ? (
+      {/*  {loading && <Loading />} */}
+      {image && (
         <div>
-          <div className="mt-4 grid grid-cols-4 gap-4 items-center">
+          <div className="grid grid-cols-4 gap-4 items-center mt-2 mx-2">
             {imageGrid}
             <Modal selected={selected} setSelected={setSelected} />
           </div>
@@ -39,8 +40,6 @@ const Gallery = ({ selected, setSelected }) => {
             </div>
           </div>
         </div>
-      ) : (
-        <Loading />
       )}
     </>
   );

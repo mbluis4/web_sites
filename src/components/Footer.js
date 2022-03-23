@@ -2,7 +2,7 @@ import { FaInstagram, FaCopyright } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
 const Footer = () => {
   return (
-    <div className=" flex flex-col items-center justify-items-end bg-slate-200/30 mt-56 ">
+    <div className=" flex flex-col items-center justify-items-end bg-slate-200/30">
       <div>
         <p>R.G</p>
       </div>

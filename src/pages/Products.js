@@ -37,7 +37,7 @@ const Products = () => {
     <Product key={item.id} item={item} />
   ));
   return (
-    <div className="flex flex-col sm:flex-row sm:justify-around sm:flex-wrap justify-between items-center mt-4">
+    <div className="flex flex-col sm:flex-row sm:justify-around sm:flex-wrap items-center ">
       {productList}
     </div>
   );
