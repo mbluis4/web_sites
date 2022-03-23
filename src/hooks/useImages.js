@@ -23,11 +23,12 @@ const useImages = () => {
         collection(db, "images"),
         orderBy("url"),
         startAfter(lastdoc),
-        limit(5)
+        limit(10)
       )
     ).then((data) => {
       setImage([]);
       if (data) {
+        setLoading(false);
         data.forEach((doc) => {
           setImage((prev) => [...prev, { id: doc.id, url: doc.data().url }]);
           const lastVisiblePage = data.docs[data.docs.length - 1];

@@ -22,8 +22,9 @@ const Gallery = ({ selected, setSelected }) => {
 
   return (
     <>
-      {/*  {loading && <Loading />} */}
-      {image && (
+      {loading ? (
+        <Loading />
+      ) : (
         <div>
           <div className="grid grid-cols-4 gap-4 items-center mt-2 mx-2">
             {imageGrid}
