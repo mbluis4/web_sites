@@ -9,68 +9,41 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase/config";
 
-const useImages = () => {
-  const [image, setImage] = useState([]);
+const useImages = (page) => {
+  const [images, setImages] = useState([]);
   const [lastVisible, setLastVisible] = useState(null);
-  const [firstVisible, setFirstVisible] = useState(null);
-  const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(null);
-  const [back, setBack] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [hasMore, setHasMore] = useState(false);
 
-  const getImages = (lastdoc = null) => {
+  const getImages = (lastdoc) => {
+    setLoading(true);
     getDocs(
       query(
         collection(db, "images"),
         orderBy("url"),
-        startAfter(lastdoc),
+        startAfter(lastdoc || 0),
         limit(10)
       )
     ).then((data) => {
-      setImage([]);
       if (data) {
         setLoading(false);
         data.forEach((doc) => {
-          setImage((prev) => [...prev, { id: doc.id, url: doc.data().url }]);
-          const lastVisiblePage = data.docs[data.docs.length - 1];
-          setLastVisible(lastVisiblePage);
-          setFirstVisible(data.docs[0]);
+          return setImages((prev) => [
+            ...prev,
+            { id: doc.id, url: doc.data().url },
+          ]);
         });
+        const lastVisibleImage = data.docs[data.docs.length - 1];
+        setLastVisible(lastVisibleImage);
+        setHasMore(data.docs.length > 0);
       }
     });
-    setLoading(true);
   };
-  useEffect(() => {
-    getImages();
-  }, []);
-
   useEffect(() => {
     getImages(lastVisible);
   }, [page]);
 
-  /*   useEffect(() => {
-    getDocs(
-      query(
-        collection(db, "images"),
-        orderBy("url", "desc"),
-        startAfter(firstVisible),
-        limit(5)
-      )
-    ).then((data) => {
-      setImage([]);
-      if (data) {
-        const revData = data.docs.reverse();
-        revData.forEach((doc) => {
-          setImage((prev) => [...prev, { id: doc.id, url: doc.data().url }]);
-          const lastVisiblePage = data.docs[data.docs.length - 1];
-          setLastVisible(lastVisiblePage);
-          setFirstVisible(data.docs[0]);
-        });
-      }
-    });
-    setLoading(true);
-  }, [back]); */
-
-  return { image, page, setPage, setLastVisible, loading, setBack };
+  return { images, loading, hasMore };
 };
 
 export default useImages;
