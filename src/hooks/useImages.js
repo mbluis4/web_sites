@@ -14,6 +14,7 @@ const useImages = (page) => {
   const [lastVisible, setLastVisible] = useState(null);
   const [loading, setLoading] = useState(true);
   const [hasMore, setHasMore] = useState(false);
+  const [error, setError] = useState(null);
 
   const getImages = (lastdoc) => {
     setLoading(true);
@@ -24,20 +25,22 @@ const useImages = (page) => {
         startAfter(lastdoc || 0),
         limit(10)
       )
-    ).then((data) => {
-      if (data) {
-        setLoading(false);
-        data.forEach((doc) => {
-          return setImages((prev) => [
-            ...prev,
-            { id: doc.id, url: doc.data().url },
-          ]);
-        });
-        const lastVisibleImage = data.docs[data.docs.length - 1];
-        setLastVisible(lastVisibleImage);
-        setHasMore(data.docs.length > 0);
-      }
-    });
+    )
+      .then((data) => {
+        if (data) {
+          setLoading(false);
+          data.forEach((doc) => {
+            return setImages((prev) => [
+              ...prev,
+              { id: doc.id, url: doc.data().url },
+            ]);
+          });
+          const lastVisibleImage = data.docs[data.docs.length - 1];
+          setLastVisible(lastVisibleImage);
+          setHasMore(data.docs.length > 0);
+        }
+      })
+      .catch((error) => setError(error));
   };
   useEffect(() => {
     getImages(lastVisible);

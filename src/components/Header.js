@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import logo from "../images/logo.png";
 import { FaBars } from "react-icons/fa";
+import CustomLink from "./CustomLink";
 
 import { Link, Outlet } from "react-router-dom";
 
@@ -24,26 +25,26 @@ const Header = () => {
                 <img src={logo} className="w-10"></img>
               </div>
               <div className="hidden sm:flex space-x-3 text-white">
-                <Link to="/" className="hover:text-gray-800">
+                <CustomLink to="/" className="hover:text-gray-800">
                   Inicio
-                </Link>
-                <Link to="products" className="hover:text-gray-800">
+                </CustomLink>
+                <CustomLink to="products" className="hover:text-gray-800">
                   Productos
-                </Link>
-                <Link to="gallery" className="hover:text-gray-800">
+                </CustomLink>
+                <CustomLink to="gallery" className="hover:text-gray-800">
                   Galería
-                </Link>
-                {/* <Link to="upload" className="hover:text-gray-800">
+                </CustomLink>
+                {/* <CustomLink to="upload" className="hover:text-gray-800">
                   Upload
-                </Link> */}
+                </CustomLink> */}
               </div>
             </div>
           </div>
 
           <div className="hidden sm:flex items-center mr-1 bg-red-400 text-rose-800 rounded hover:text-gray-800">
-            <Link to="contact" className="py-1 px-3">
+            <CustomLink to="contact" className="py-1 px-3">
               Contacto
-            </Link>
+            </CustomLink>
           </div>
 
           <div className="sm:hidden flex text-lg">
@@ -58,30 +59,34 @@ const Header = () => {
           fixed right-0 bg-slate-500 h-screen w-1/2 z-10 translate-x-full ease-in duration-300"
             ref={navRef}
           >
-            <Link
+            <CustomLink
               to="/"
               className="hover:text-gray-800"
               onClick={() => setShowLinks(false)}
             >
               Inicio
-            </Link>
-            <Link
+            </CustomLink>
+            <CustomLink
               to="products"
               className="hover:text-gray-800"
               onClick={() => setShowLinks(false)}
             >
               Productos
-            </Link>
-            <Link
+            </CustomLink>
+            <CustomLink
               to="gallery"
               className="hover:text-gray-800"
               onClick={() => setShowLinks(false)}
             >
               Galería
-            </Link>
-            <Link to="contact" className="" onClick={() => setShowLinks(false)}>
+            </CustomLink>
+            <CustomLink
+              to="contact"
+              className=""
+              onClick={() => setShowLinks(false)}
+            >
               Contacto
-            </Link>
+            </CustomLink>
           </div>
         )}
       </nav>
