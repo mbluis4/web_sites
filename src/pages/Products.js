@@ -4,6 +4,7 @@ import mini_1 from "../images/mini_1.png";
 import rostro from "../images/rostro.png";
 import baby_shower from "../images/baby_shower.png";
 import navidad from "../images/navidad.png";
+import { Link } from "react-router-dom";
 
 const Products = () => {
   const [products, setProducts] = useState([
@@ -34,12 +35,29 @@ const Products = () => {
   ]);
 
   const productList = products.map((item) => (
-    <Product key={item.id} item={item} />
+    <div
+      key={item.id}
+      className="shadow-md rounded-md flex flex-col items-center justify-center w-52 bg-white py-3 mb-4 h-52"
+    >
+      <Link to={`/products/${item.id}`}>
+        <div className="w-20 mb-3 pb-2 ">
+          <img src={item.srcImg} alt="soap" className=" max-w-full"></img>
+        </div>
+        <h2 className="text-sm spa font-bold uppercase tracking-wide mb-1">
+          {item.name}
+        </h2>
+      </Link>
+    </div>
   ));
   return (
-    <div className="flex flex-col sm:flex-row sm:justify-around items-center sm:flex-wrap">
-      {productList}
-    </div>
+    <>
+      <h1 className="text-center mb-4 text-lg md:text-4xl text-slate-500">
+        Productos
+      </h1>
+      <div className="flex flex-col sm:flex-row sm:justify-around items-center sm:flex-wrap self-center md:space-x-6">
+        {productList}
+      </div>
+    </>
   );
 };
 

@@ -7,6 +7,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import UploadFiles from "./pages/UploadFiles";
 import Footer from "./components/Footer";
+import Product from "./components/Product";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
@@ -17,7 +18,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Header />}>
           <Route index element={<Hero />} />
-          <Route path="products" element={<Products />} />
+          <Route path="products" element={<Products />}>
+            <Route path="products/:productId" element={<Product />} />
+          </Route>
+
           <Route
             path="gallery"
             element={<Gallery selected={selected} setSelected={setSelected} />}

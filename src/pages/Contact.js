@@ -3,13 +3,11 @@ import EmailModal from "../components/EmailModal";
 
 const Contact = () => {
   const [emailSent, setEmailSent] = useState(false);
-  const [form, setForm] = useState([
-    {
-      name: "",
-      email: "",
-      message: "",
-    },
-  ]);
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prevForm) => ({
@@ -20,6 +18,11 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setEmailSent(true);
+    setForm({
+      name: "",
+      email: "",
+      message: "",
+    });
   };
 
   return (
