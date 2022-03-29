@@ -4,7 +4,7 @@ import mini_1 from "../images/mini_1.png";
 import rostro from "../images/rostro.png";
 import baby_shower from "../images/baby_shower.png";
 import navidad from "../images/navidad.png";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const Products = () => {
   const [products, setProducts] = useState([
@@ -51,10 +51,10 @@ const Products = () => {
   ));
   return (
     <>
-      <h1 className="text-center mb-4 text-lg md:text-4xl text-slate-500">
+      <h1 className="text-center mb-4 text-2xl md:-mt-32 md:text-4xl text-slate-500">
         Productos
       </h1>
-      <div className="flex flex-col sm:flex-row sm:justify-around items-center sm:flex-wrap self-center md:space-x-6">
+      <div className="flex flex-col sm:flex-row md:-mt-10 sm:justify-around items-center sm:flex-wrap self-center md:space-x-6">
         {productList}
       </div>
     </>
