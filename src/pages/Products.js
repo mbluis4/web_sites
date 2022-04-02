@@ -3,11 +3,8 @@ import productData from "../components/productData";
 
 const Products = () => {
   const productList = productData.map((item) => (
-    <Link to={`/products/${item.id}`}>
-      <div
-        key={item.id}
-        className="shadow-md rounded-md flex flex-col items-center justify-center w-52 bg-white py-3 mb-4 h-52"
-      >
+    <Link key={item.id} to={`/products/${item.id}`}>
+      <div className="shadow-md rounded-md flex flex-col items-center justify-center w-52 bg-white py-3 mb-4 h-52">
         <div className="w-20 mb-3 pb-2 ">
           <img src={item.srcImg} alt="soap" className=" max-w-full"></img>
         </div>

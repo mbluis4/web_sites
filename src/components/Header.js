@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import logo from "../images/logo.png";
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaShoppingCart } from "react-icons/fa";
 import CustomLink from "./CustomLink";
 
 import { Link, Outlet } from "react-router-dom";
@@ -18,7 +18,10 @@ const Header = () => {
   return (
     <>
       <nav>
-        <div className="flex justify-between items-center max-w-7xl bg-red-300 rounded mx-auto pb-2 px-2 shadow-sm opacity-90">
+        <div
+          className="flex justify-between items-center max-w-7xl bg-red-300 
+        rounded mx-auto pb-2 px-2 shadow-xl opacity-90"
+        >
           <div className="flex">
             <div className="flex items-center py-2">
               <div className="mr-2 text-xl">
@@ -41,8 +44,14 @@ const Header = () => {
             </div>
           </div>
 
-          <div className="hidden sm:flex items-center mr-1 bg-red-400 text-rose-800 rounded hover:text-gray-800">
-            <CustomLink to="contact" className="py-1 px-3">
+          <div className="hidden sm:flex justify-between space-x-3 items-center">
+            <CustomLink to="cart" className="text-xl">
+              <FaShoppingCart />
+            </CustomLink>
+            <CustomLink
+              to="contact"
+              className="py-1 px-3 items-center mr-1 bg-red-400 text-rose-800 rounded hover:text-gray-800"
+            >
               Contacto
             </CustomLink>
           </div>
