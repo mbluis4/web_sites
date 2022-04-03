@@ -18,7 +18,7 @@ const Product = ({ addToCart }) => {
       <div>
         <h1 className="uppercase mb-2">{name}</h1>
         <h2 className="border-b-2 mb-4 font-bold">$ 200</h2>
-        <Quantity addToCart={addToCart} id={id} />
+        <Quantity addToCart={addToCart} id={id} addButton={true} />
       </div>
     </div>
   );

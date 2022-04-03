@@ -1,16 +1,19 @@
 import { useState } from "react";
 
-const Quantity = ({ addToCart, id }) => {
-  const [quantity, setQuantity] = useState(1);
+const QuantityCart = ({ item }) => {
+  const [quantity, setQuantity] = useState(item.qty);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setQuantity(Number(value));
+    setQuantity({
+      [name]: value,
+    });
   };
+
+  //console.log(item);
 
   return (
     <div>
-      <p>Cantidad</p>
       <div className="flex flex-col">
         <div className="flex mt-2">
           <button
@@ -33,16 +36,17 @@ const Quantity = ({ addToCart, id }) => {
             +
           </button>
         </div>
-
-        <button
-          onClick={() => addToCart(id, quantity)}
-          className="bg-red-300 mt-5 shadow-md px-7 py-2 rounded-md hover:bg-red-400 hover:text-slate-100 text-sm"
-        >
-          Agregar al carrito
-        </button>
+        {/* {addButton && (
+          <button
+            onClick={() => addToCart(id, quantity.count)}
+            className="bg-red-300 mt-5 shadow-md px-7 py-2 rounded-md hover:bg-red-400 hover:text-slate-100 text-sm"
+          >
+            Agregar al carrito
+          </button>
+        )} */}
       </div>
     </div>
   );
 };
 
-export default Quantity;
+export default QuantityCart;
