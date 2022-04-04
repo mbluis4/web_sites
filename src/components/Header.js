@@ -20,7 +20,7 @@ const Header = () => {
       <nav>
         <div
           className="flex justify-between items-center max-w-7xl bg-red-300 
-        rounded mx-auto pb-2 px-2 shadow-lg opacity-90"
+        rounded mx-0 pb-2 px-2 shadow-lg opacity-90"
         >
           <div className="flex">
             <div className="flex items-center py-2">

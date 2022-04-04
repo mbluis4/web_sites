@@ -1,16 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useCart from "../hooks/useCart";
 
-const QuantityCart = ({ item }) => {
-  const [quantity, setQuantity] = useState(item.qty);
+const QuantityCart = ({ item, setRecalc }) => {
+  const [quantityCart, setQuantityCart] = useState(item.qty);
+  const { addToCart, setCounter } = useCart();
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setQuantity({
-      [name]: value,
-    });
+    let { name, value } = e.target;
+    if (value < 1) value = "";
+    String(value);
+    setQuantityCart(value);
+    //addToCart(item.id, quantity);
   };
-
-  //console.log(item);
+  useEffect(() => {
+    addToCart(item.id, Number(quantityCart));
+    setRecalc((prev) => !prev);
+    setCounter((prev) => prev + 1);
+  }, [quantityCart, item.id]);
 
   return (
     <div>
@@ -18,7 +24,11 @@ const QuantityCart = ({ item }) => {
         <div className="flex mt-2">
           <button
             className="w-5 bg-slate-200"
-            onClick={() => setQuantity((prev) => (prev === 1 ? 1 : prev - 1))}
+            onClick={() =>
+              setQuantityCart((prev) =>
+                Number(prev) === 1 ? 1 : Number(prev) - 1
+              )
+            }
           >
             -
           </button>
@@ -26,12 +36,12 @@ const QuantityCart = ({ item }) => {
             type="number"
             onChange={handleChange}
             name="quantity"
-            value={quantity}
+            value={quantityCart}
             className="w-6 border-2 border-slate-200 text-center"
           ></input>
           <button
             className="w-5 bg-slate-200"
-            onClick={() => setQuantity((prev) => prev + 1)}
+            onClick={() => setQuantityCart((prev) => Number(prev) + 1)}
           >
             +
           </button>

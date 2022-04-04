@@ -1,7 +1,7 @@
 import productData from "./productData";
 import QuantityCart from "./QuantityCart";
 
-const CartItem = ({ item }) => {
+const CartItem = ({ item, setRecalc }) => {
   const thisItem = productData.find((product) => product.id === item.id);
 
   return (
@@ -9,7 +9,7 @@ const CartItem = ({ item }) => {
       <img src={thisItem.srcImg} alt="soap" className="w-10 mr-2"></img>
       <p className="w-24">{thisItem.name}</p>
       <div className="mr-2">
-        <QuantityCart item={item} />
+        <QuantityCart item={item} setRecalc={setRecalc} />
       </div>
       <p>$ {thisItem.price}</p>
     </div>

@@ -82,3 +82,116 @@ img {
 .nav-active {
   transform: translate(0%);
 }
+
+.addToCart {
+  padding: 10px;
+  width: 150px;
+  height: 50px;
+  border: 0;
+  position: relative;
+  transition: 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.addToCart:active {
+  transform: scale(.9)
+}
+
+.addToCart .shoppingCart {
+font-size: 1.3rem;
+position: absolute;
+z-index: 2;
+top: 50%;
+left: -10%;
+transform: translate(-50%, -50%);
+
+}
+
+.addToCart .boxCart {
+  font-size: 1.2rem;
+  position: absolute;
+  z-index: 1;
+  top: -30%;
+  left: 51%;
+  transform: translate(-50%, -50%);
+  color: black;
+}
+
+.addToCart span {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+.addToCart span.add {
+  opacity:1;
+}
+
+.addToCart span.added {
+  opacity: 0;
+}
+
+.addToCart.clicked .shoppingCart {
+  animation: cart 1.5s ease-in-out forwards;
+}
+
+.addToCart.clicked .boxCart {
+  animation: box 1.5s ease-in-out forwards;
+}
+
+.addToCart.clicked span.add {
+  animation: txt1 1.5s ease-in-out forwards;
+}
+
+.addToCart.clicked span.added {
+  animation: txt2 1.5s ease-in-out forwards;
+}
+
+@keyframes cart {
+  0% {
+    left: -10%;
+  }
+  40%, 60% {
+    left:50%;
+  }
+  100% {
+    left: 110%
+  }
+}
+
+@keyframes box {
+  0%, 40% {
+    top: -20%;
+  }
+  60% {
+    top:40%;
+    left:52%;
+  }
+
+  100% {
+    top: 40%;
+    left: 112%
+  }
+}
+
+@keyframes txt1 {
+  0% {
+    opacity: 1;
+  }
+  20%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes txt2 {
+  0%, 80% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

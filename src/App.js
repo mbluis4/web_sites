@@ -11,37 +11,12 @@ import Product from "./components/Product";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Cart from "./pages/Cart";
+import useCart from "./hooks/useCart";
 
 function App() {
   const [selected, setSelected] = useState(null);
-  const [cart, setCart] = useState(() => {
-    if (localStorage.getItem("cart")) {
-      return JSON.parse(localStorage.getItem("cart"));
-    } else return [];
-  });
-
-  const addToCart = (id, qty) => {
-    // check if id is in Cart
-    //if it's in, update qty
-    //else, add id, qty
-    setCart((prevCart) => {
-      if (cart.length === 0) {
-        const newCart = [{ id, qty }];
-        localStorage.setItem("cart", JSON.stringify(newCart));
-        return newCart;
-      }
-
-      for (let item of prevCart) {
-        if (item.id === id) {
-          item.qty = qty;
-          return prevCart;
-        } else continue;
-      }
-      const newCart = [...prevCart, { id, qty }];
-      localStorage.setItem("cart", JSON.stringify(newCart));
-      return newCart;
-    });
-  };
+  const { cart, addToCart } = useCart();
+  const [counter, setCounter] = useState(0);
 
   return (
     <div className="App h-screen flex flex-col justify-between">
@@ -61,7 +36,7 @@ function App() {
           />
           <Route path="about" element={<About />} />
           <Route path="upload" element={<UploadFiles />} />
-          <Route path="cart" element={<Cart cart={cart} />} />
+          <Route path="cart" element={<Cart addToCart={addToCart} />} />
           <Route path="contact" element={<Contact />} />
         </Route>
       </Routes>

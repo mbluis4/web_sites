@@ -1,11 +1,23 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import { FaShoppingCart } from "react-icons/fa";
+import { GiCardboardBoxClosed } from "react-icons/gi";
 
 const Quantity = ({ addToCart, id }) => {
   const [quantity, setQuantity] = useState(1);
+  const addButton = useRef(null);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setQuantity(Number(value));
+    let { name, value } = e.target;
+    if (value < 1) value = "";
+    String(value);
+    setQuantity(value);
+  };
+  useEffect(() => {
+    addButton.current.classList.remove("clicked");
+  }, [quantity]);
+  const handleClick = () => {
+    addButton.current.classList.add("clicked");
+    addToCart(id, Number(quantity));
   };
 
   return (
@@ -35,10 +47,15 @@ const Quantity = ({ addToCart, id }) => {
         </div>
 
         <button
-          onClick={() => addToCart(id, quantity)}
-          className="bg-red-300 mt-5 shadow-md px-7 py-2 rounded-md hover:bg-red-400 hover:text-slate-100 text-sm"
+          onClick={handleClick}
+          ref={addButton}
+          className="bg-red-300 mt-5 shadow-md px-7 py-2 
+          rounded-md hover:bg-red-400 hover:text-slate-100 text-sm addToCart"
         >
-          Agregar al carrito
+          <span className="add">Agregar</span>
+          <span className="added">Agregado</span>
+          <FaShoppingCart className="inline shoppingCart" />
+          <GiCardboardBoxClosed className="inline boxCart" />
         </button>
       </div>
     </div>
