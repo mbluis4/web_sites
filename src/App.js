@@ -16,7 +16,6 @@ import useCart from "./hooks/useCart";
 function App() {
   const [selected, setSelected] = useState(null);
   const { cart, addToCart } = useCart();
-  const [counter, setCounter] = useState(0);
 
   return (
     <div className="App h-screen flex flex-col justify-between">

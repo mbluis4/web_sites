@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import useCart from "../hooks/useCart";
+import productData from "./productData";
 
-const QuantityCart = ({ item, setRecalc }) => {
+const QuantityCart = ({ item, setRecalc, setTotal }) => {
   const [quantityCart, setQuantityCart] = useState(item.qty);
-  const { addToCart, setCounter } = useCart();
+  const { cart, addToCart } = useCart();
 
   const handleChange = (e) => {
     let { name, value } = e.target;
@@ -14,8 +15,9 @@ const QuantityCart = ({ item, setRecalc }) => {
   };
   useEffect(() => {
     addToCart(item.id, Number(quantityCart));
-    setRecalc((prev) => !prev);
-    setCounter((prev) => prev + 1);
+    setRecalc((prev) => prev + 1);
+
+    console.log(cart);
   }, [quantityCart, item.id]);
 
   return (

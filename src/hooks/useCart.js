@@ -1,7 +1,7 @@
+import productData from "../components/productData";
 import { useState } from "react";
 
 const useCart = () => {
-  const [counter, setCounter] = useState(0);
   const [cart, setCart] = useState(() => {
     return localStorage.getItem("cart")
       ? JSON.parse(localStorage.getItem("cart"))
@@ -20,10 +20,9 @@ const useCart = () => {
       localStorage.setItem("cart", JSON.stringify(newCart));
       return newCart;
     });
-    console.log(cart);
   };
-  console.log(counter);
-  return { cart, setCart, addToCart, counter, setCounter };
+  //console.log(cart);
+  return { cart, setCart, addToCart };
 };
 
 export default useCart;
