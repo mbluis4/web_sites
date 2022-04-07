@@ -1,7 +1,9 @@
+import { useState, createContext } from "react";
 import productData from "../components/productData";
-import { useState } from "react";
 
-const useCart = () => {
+const ItemContext = createContext();
+
+const ItemProvider = (props) => {
   const [cart, setCart] = useState(() => {
     return localStorage.getItem("cart")
       ? JSON.parse(localStorage.getItem("cart"))
@@ -28,8 +30,19 @@ const useCart = () => {
       return newCart;
     });
   };
-  //console.log(cart);
-  return { cart, setCart, addToCart, removeItem };
+  console.log(cart);
+  return (
+    <ItemContext.Provider
+      value={{
+        cart,
+        setCart,
+        addToCart,
+        removeItem,
+      }}
+    >
+      {props.children}
+    </ItemContext.Provider>
+  );
 };
 
-export default useCart;
+export { ItemProvider, ItemContext };

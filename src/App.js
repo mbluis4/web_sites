@@ -15,7 +15,6 @@ import useCart from "./hooks/useCart";
 
 function App() {
   const [selected, setSelected] = useState(null);
-  const { cart, addToCart } = useCart();
 
   return (
     <div className="App h-screen flex flex-col justify-between">
@@ -24,10 +23,7 @@ function App() {
           <Route index element={<Hero />} />
           <Route path="products" element={<Products />} />
 
-          <Route
-            path="products/:productId"
-            element={<Product addToCart={addToCart} />}
-          />
+          <Route path="products/:productId" element={<Product />} />
 
           <Route
             path="gallery"
@@ -35,7 +31,7 @@ function App() {
           />
           <Route path="about" element={<About />} />
           <Route path="upload" element={<UploadFiles />} />
-          <Route path="cart" element={<Cart addToCart={addToCart} />} />
+          <Route path="cart" element={<Cart />} />
           <Route path="contact" element={<Contact />} />
         </Route>
       </Routes>

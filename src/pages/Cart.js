@@ -1,21 +1,14 @@
 import productData from "../components/productData";
 import CartItem from "../components/CartItem.js";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useCart from "../hooks/useCart";
+import { ItemContext } from "../hooks/CartContext";
 
 const Cart = () => {
-  const { cart } = useCart();
-  const [recalc, setRecalc] = useState(0);
+  const { cart } = useContext(ItemContext);
   const [total, setTotal] = useState(null);
 
-  const cartItems = cart.map((item) => (
-    <CartItem
-      key={item.id}
-      item={item}
-      setRecalc={setRecalc}
-      setTotal={setTotal}
-    />
-  ));
+  const cartItems = cart.map((item) => <CartItem key={item.id} item={item} />);
 
   useEffect(() => {
     setTotal(() => {
@@ -27,18 +20,14 @@ const Cart = () => {
       }
       return tot;
     });
-    console.log(recalc);
-    console.log(cart);
-  }, [recalc, cart]);
+  }, [cart]);
 
   return (
     <div className="max-w-4xl flex flex-col items-center mx-auto ">
       <p className="self-center font-bold md:text-lg">Carrito de compras</p>
       {cartItems}
       <div className="flex self-end mx-4">
-        <p>
-          Total: ${total} {recalc}
-        </p>
+        <p>Total: ${total}</p>
       </div>
       <button className="bg-red-300 mt-5 shadow-md px-7 py-2 rounded-md hover:bg-red-400 hover:text-slate-100 text-sm self-end">
         Comprar

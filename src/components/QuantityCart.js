@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
-import useCart from "../hooks/useCart";
-import productData from "./productData";
+import { useContext, useEffect, useState } from "react";
+import { ItemContext } from "../hooks/CartContext";
 
-const QuantityCart = ({ item, setRecalc, setTotal }) => {
+const QuantityCart = ({ item }) => {
   const [quantityCart, setQuantityCart] = useState(item.qty);
-  const { cart, addToCart } = useCart();
+  const { addToCart } = useContext(ItemContext);
 
   const handleChange = (e) => {
     let { name, value } = e.target;
@@ -15,9 +14,6 @@ const QuantityCart = ({ item, setRecalc, setTotal }) => {
   };
   useEffect(() => {
     addToCart(item.id, Number(quantityCart));
-    setRecalc((prev) => prev + 1);
-
-    console.log(cart);
   }, [quantityCart, item.id]);
 
   return (

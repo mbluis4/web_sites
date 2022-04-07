@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import productData from "./productData";
 import Quantity from "./Quantity";
 
-const Product = ({ addToCart }) => {
+const Product = () => {
   const { productId } = useParams();
   const thisProduct = productData.find(
     (prod) => prod.id === parseInt(productId)
@@ -21,7 +21,7 @@ const Product = ({ addToCart }) => {
       <div>
         <h1 className="uppercase mb-2">{name}</h1>
         <h2 className="border-b-2 mb-4 font-bold">$ {price}</h2>
-        <Quantity addToCart={addToCart} id={id} addButton={true} />
+        <Quantity id={id} />
       </div>
     </div>
   );

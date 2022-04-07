@@ -1,10 +1,12 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { GiCardboardBoxClosed } from "react-icons/gi";
+import { ItemContext } from "../hooks/CartContext";
 
-const Quantity = ({ addToCart, id }) => {
+const Quantity = ({ id }) => {
   const [quantity, setQuantity] = useState(1);
   const addButton = useRef(null);
+  const { addToCart } = useContext(ItemContext);
 
   const handleChange = (e) => {
     let { name, value } = e.target;
