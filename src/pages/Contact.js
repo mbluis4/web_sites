@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import EmailModal from "../components/EmailModal";
 
 const Contact = () => {
@@ -8,6 +9,25 @@ const Contact = () => {
     email: "",
     message: "",
   });
+  const formRef = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        "service_t5pto3s",
+        "template_joq66b4",
+        formRef.current,
+        "QEUzjYuOjHTEohzom"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => console.log(error.text)
+      );
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prevForm) => ({
@@ -17,6 +37,7 @@ const Contact = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    sendEmail(e);
     setEmailSent(true);
     setForm({
       name: "",
@@ -27,7 +48,12 @@ const Contact = () => {
 
   return (
     <div className="max-w-1/700  bg-white space-y-10 py-6 shadow-lg rounded-lg border-slate-700 border-2 mx-auto">
-      <form onSubmit={handleSubmit} action="#" className="py-2 px-6">
+      <form
+        onSubmit={handleSubmit}
+        ref={formRef}
+        action="#"
+        className="py-2 px-6"
+      >
         <label htmlFor="name">Nombre</label>
         <input
           type="text"

@@ -20,7 +20,7 @@ const CartItem = ({ item }) => {
       <div className="mr-2">
         <QuantityCart item={item} />
       </div>
-      <p>$ {thisItem.price}</p>
+      <p>$ {thisItem.price} c/u</p>
     </div>
   );
 };

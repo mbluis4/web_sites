@@ -1,7 +1,6 @@
 import productData from "../components/productData";
 import CartItem from "../components/CartItem.js";
 import { useContext, useEffect, useState } from "react";
-import useCart from "../hooks/useCart";
 import { ItemContext } from "../hooks/CartContext";
 
 const Cart = () => {
@@ -27,7 +26,7 @@ const Cart = () => {
       <p className="self-center font-bold md:text-lg">Carrito de compras</p>
       {cartItems}
       <div className="flex self-end mx-4">
-        <p>Total: ${total}</p>
+        <p>Total: $ {total}</p>
       </div>
       <button className="bg-red-300 mt-5 shadow-md px-7 py-2 rounded-md hover:bg-red-400 hover:text-slate-100 text-sm self-end">
         Comprar
