@@ -17,6 +17,11 @@ const ItemProvider = (props) => {
     localStorage.setItem("cart", JSON.stringify(newCart));
   };
 
+  const emptyCart = () => {
+    setCart([]);
+    localStorage.setItem("cart", "");
+  };
+
   const addToCart = (id, qty) => {
     setCart((prevCart) => {
       const newCart = [...prevCart];
@@ -30,7 +35,6 @@ const ItemProvider = (props) => {
       return newCart;
     });
   };
-  console.log(cart);
   return (
     <ItemContext.Provider
       value={{
@@ -38,6 +42,7 @@ const ItemProvider = (props) => {
         setCart,
         addToCart,
         removeItem,
+        emptyCart,
       }}
     >
       {props.children}
