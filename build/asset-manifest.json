@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.57673d68.css",
+    "main.js": "/static/js/main.10464728.js",
+    "static/media/hero_blur.jpg": "/static/media/hero_blur.8abe05459e95d9b10472.jpg",
+    "static/media/navidad.png": "/static/media/navidad.25d7520a17e7a06f6e3d.png",
+    "static/media/rostro.png": "/static/media/rostro.5c618b9cb40b59dcef9a.png",
+    "static/media/mini_3.png": "/static/media/mini_3.93d668036c1f9c5118b7.png",
+    "static/media/baby_shower_2.png": "/static/media/baby_shower_2.6445ffb732cff2b55b16.png",
+    "static/media/logo.png": "/static/media/logo.96b5bd898f70365dfc14.png",
+    "index.html": "/index.html",
+    "main.57673d68.css.map": "/static/css/main.57673d68.css.map",
+    "main.10464728.js.map": "/static/js/main.10464728.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.57673d68.css",
+    "static/js/main.10464728.js"
+  ]
+}
