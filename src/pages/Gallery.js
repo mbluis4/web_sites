@@ -55,7 +55,7 @@ const Gallery = ({ selected, setSelected }) => {
   return (
     <>
       <div>
-        <div className="grid grid-cols-3 sm:grid-cols-4 gap-4 mt-2 mb-5 mx-2">
+        <div className="grid grid-cols-3 sm:grid-cols-4 gap-4 mt-2 mb-5 max-w-7xl mx-auto">
           {imageGrid}
           <Modal selected={selected} setSelected={setSelected} />
         </div>

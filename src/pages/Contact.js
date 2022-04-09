@@ -74,12 +74,11 @@ const Contact = () => {
         <label htmlFor="message">Mensaje</label>
         <textarea
           type="text"
-          placeholder="mensaje"
           name="message"
           value={form.message}
           onChange={handleChange}
           rows="8"
-          className="placeholder:italic placeholder:text-slate-400 w-full border resize-none"
+          className="placeholder:italic placeholder:text-slate-400 rounded-lg border-2 w-full resize-none"
         ></textarea>
         <button
           type="Submit"

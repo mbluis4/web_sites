@@ -11,7 +11,6 @@ import Product from "./components/Product";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Cart from "./pages/Cart";
-import useCart from "./hooks/useCart";
 
 function App() {
   const [selected, setSelected] = useState(null);

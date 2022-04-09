@@ -1,5 +1,4 @@
 import { useState, createContext } from "react";
-import productData from "../components/productData";
 
 const ItemContext = createContext();
 
@@ -12,7 +11,6 @@ const ItemProvider = (props) => {
 
   const removeItem = (id) => {
     const newCart = cart.filter((item) => item.id !== id);
-    console.log(newCart);
     setCart(newCart);
     localStorage.setItem("cart", JSON.stringify(newCart));
   };

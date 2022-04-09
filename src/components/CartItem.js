@@ -1,7 +1,6 @@
 import productData from "./productData";
 import QuantityCart from "./QuantityCart";
 import { FaTrash } from "react-icons/fa";
-import useCart from "../hooks/useCart";
 import { useContext } from "react";
 import { ItemContext } from "../hooks/CartContext";
 

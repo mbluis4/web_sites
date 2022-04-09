@@ -18,7 +18,7 @@ const Modal = ({ selected, setSelected }) => {
           <img
             src={selected}
             alt="enlarged"
-            className="relative block max-h-1/3 max-w-lg mx-auto shadow-lg border-white border-4"
+            className="relative block max-h-screen max-w-lg mx-auto shadow-lg border-white border-4"
           />
         </motion.div>
       )}

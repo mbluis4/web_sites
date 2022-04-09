@@ -8,14 +8,14 @@ const Product = () => {
     (prod) => prod.id === parseInt(productId)
   );
 
-  const { name, description, srcImg, id, price } = thisProduct;
+  const { name, srcImg, id, price } = thisProduct;
 
   return (
     <div
       className="flex justify-center self-center bg-slate-50 
     p-5 rounded-lg shadow-lg hover:shadow-xl"
     >
-      <div className="mr-20 w-44">
+      <div className="mr-20 w-44 ">
         <img src={srcImg} alt="soap" className="max-w-full"></img>
       </div>
       <div>

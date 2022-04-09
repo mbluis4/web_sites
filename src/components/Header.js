@@ -1,11 +1,13 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 import logo from "../images/logo.png";
 import { FaBars, FaShoppingCart } from "react-icons/fa";
 import CustomLink from "./CustomLink";
+import { ItemContext } from "../hooks/CartContext";
+import { motion } from "framer-motion";
 
-import { Link, Outlet } from "react-router-dom";
-
+import { Outlet } from "react-router-dom";
 const Header = () => {
+  const { cart } = useContext(ItemContext);
   const [showLinks, setShowLinks] = useState(false);
   const navRef = useRef(null);
 
@@ -24,9 +26,11 @@ const Header = () => {
         >
           <div className="flex">
             <div className="flex items-center py-2">
-              <div className="mr-2 text-xl">
-                <img src={logo} className="w-10"></img>
-              </div>
+              <CustomLink to="/" className="hover:text-gray-800">
+                <div className="mr-2 text-xl">
+                  <img src={logo} alt="RG soaps logo" className="w-10"></img>
+                </div>
+              </CustomLink>
               <div className="hidden sm:flex space-x-3 text-white">
                 <CustomLink to="/" className="hover:text-gray-800">
                   Inicio
@@ -44,9 +48,21 @@ const Header = () => {
             </div>
           </div>
 
-          <div className="hidden sm:flex justify-between space-x-3 items-center">
+          <div className="hidden sm:flex justify-between space-x-4 items-center">
             <CustomLink to="cart" className="text-xl">
-              <FaShoppingCart />
+              <motion.div className="relative">
+                <FaShoppingCart />
+                {cart.length > 0 && (
+                  <motion.div
+                    className="flex items-center justify-center w-6 
+                   h-6 text-sm absolute -z-10 -top-4 -right-3 text-center bg-red-500 rounded-full border-0 font-bold no-underline"
+                    animate={{ scale: [1, 1.5, 1] }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {cart.length}
+                  </motion.div>
+                )}
+              </motion.div>
             </CustomLink>
             <CustomLink
               to="contact"
@@ -64,7 +80,7 @@ const Header = () => {
         </div>
         {showLinks && (
           <div
-            className="navi flex flex-col items-center py-5 space-y-2 text-slate-300 
+            className="navi flex flex-col items-center py-5 space-y-3 text-slate-300 
           fixed right-0 bg-slate-500 h-screen w-1/2 z-10 translate-x-full ease-in duration-300"
             ref={navRef}
           >
@@ -96,6 +112,16 @@ const Header = () => {
             >
               Contacto
             </CustomLink>
+            <CustomLink to="cart" className="text-xl">
+              <div className="relative">
+                <FaShoppingCart />
+                {cart.length > 0 && (
+                  <div className="flex items-center justify-center w-5 h-5 text-xs absolute -z-10 -top-3 -right-3 text-center bg-red-600 rounded-full border-0 font-bold no-underline">
+                    {cart.length}
+                  </div>
+                )}
+              </div>
+            </CustomLink>
           </div>
         )}
       </nav>
@@ -105,44 +131,3 @@ const Header = () => {
 };
 
 export default Header;
-
-{
-  /* <nav>
-      <div className="nav-center">
-        <div className="nav-header">
-          <h2>Logo</h2>
-          <button className="nav-toggle" onClick={toggleLinks}>
-            <FaBars />
-          </button>
-        </div>
-        <div className="links-container" ref={linksContainerRef}>
-          <ul className="links" ref={linksRef}>
-            {links.map((link) => {
-              const { id, url, text } = link;
-              return (
-                <li key={id}>
-                  <Link to={`${url}`}>{text}</Link>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-        <div className="links contact-link" ref={contactRef}>
-          <Link to="contact">
-            <p>Contacto</p>
-          </Link>
-        </div>
-      </div>
-    </nav> */
-}
-
-/*       useEffect(() => {
-        const linksHeight = linksRef.current.getBoundingClientRect().height;
-        if (showLinks) {
-          contactRef.current.style.height = `${linksHeight}px`;
-          linksContainerRef.current.style.height = `${linksHeight}px`;
-        } else {
-          contactRef.current.style.height = "0px";
-          linksContainerRef.current.style.height = "0px";
-        }
-      }, [showLinks]); */
