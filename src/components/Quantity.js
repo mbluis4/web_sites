@@ -9,7 +9,7 @@ const Quantity = ({ id }) => {
   const { addToCart } = useContext(ItemContext);
 
   const handleChange = (e) => {
-    let { name, value } = e.target;
+    let { value } = e.target;
     if (value < 1) value = "";
     String(value);
     setQuantity(value);

@@ -6,7 +6,7 @@ const QuantityCart = ({ item }) => {
   const { addToCart } = useContext(ItemContext);
 
   const handleChange = (e) => {
-    let { name, value } = e.target;
+    let { value } = e.target;
     if (value < 1) value = "";
     String(value);
     setQuantityCart(value);
@@ -14,7 +14,7 @@ const QuantityCart = ({ item }) => {
   };
   useEffect(() => {
     addToCart(item.id, Number(quantityCart));
-  }, [quantityCart, item.id]);
+  }, [quantityCart, item.id, addToCart]);
 
   return (
     <div>

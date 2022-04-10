@@ -3,7 +3,7 @@ import rostro from "../images/rostro.png";
 import baby_shower from "../images/baby_shower_2.png";
 import navidad from "../images/navidad.png";
 
-export default [
+const productData = [
   {
     id: 1,
     name: "Mini-jabones",
@@ -33,3 +33,5 @@ export default [
     price: 400,
   },
 ];
+
+export default productData;
