@@ -1,12 +1,23 @@
+import bg_hero from "../images/hero_blur.jpg";
+import mini_1 from "../images/mini_1.png";
+import mini_2 from "../images/mini_2.png";
+import mini_3 from "../images/mini_3.png";
+
 const Hero = () => {
   return (
-    <>
-      <div className="flex hero flex-col"></div>
-      <div className="flex flex-col font-bold items-center justify-start h-96 text-slate-100">
-        <h1 className="text-4xl lg:text-7xl mb-1">Jabones de glicerina</h1>
-        <h2 className="hero-subtitle lg:text-lg">Renueva tus sentidos...</h2>
+    <div className="flex flex-col items-center">
+      <div className="mb-5">
+        <p className="text-lg">A total renewal of senses</p>
+        <p className="text-5xl">Glycerin soaps</p>
+        <button
+          className="bg-red-300 mt-5 shadow-md px-7 py-2 
+          rounded-md hover:bg-red-400 hover:text-slate-100 text-sm"
+        >
+          go to products
+        </button>
       </div>
-    </>
+      <div className="hero flex min-h-full"></div>
+    </div>
   );
 };
 

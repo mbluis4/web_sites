@@ -14,7 +14,7 @@ const QuantityCart = ({ item }) => {
   };
   useEffect(() => {
     addToCart(item.id, Number(quantityCart));
-  }, [quantityCart, item.id, addToCart]);
+  }, [quantityCart, item.id]);
 
   return (
     <div>

@@ -42,7 +42,7 @@ const Cart = () => {
           </div>
           <button
             onClick={placeOrder}
-            className="bg-red-300 mt-5 shadow-md px-7 py-2 rounded-md hover:bg-red-400 hover:text-slate-100 text-sm self-end"
+            className="bg-red-300 mt-5 shadow-md px-7 py-2 rounded-md hover:bg-red-400 hover:text-slate-100 text-sm self-end dis"
           >
             {buttonText}
           </button>

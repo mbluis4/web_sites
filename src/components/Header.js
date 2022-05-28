@@ -81,7 +81,7 @@ const Header = () => {
         {showLinks && (
           <div
             className="navi flex flex-col items-center py-5 space-y-3 text-slate-300 
-          fixed right-0 bg-slate-500 h-screen w-1/2 z-10 translate-x-full ease-in duration-300"
+          fixed right-0 bg-slate-500 h-screen w-1/2 z-10 translate-x-full ease-in-out duration-300"
             ref={navRef}
           >
             <CustomLink
@@ -112,7 +112,11 @@ const Header = () => {
             >
               Contacto
             </CustomLink>
-            <CustomLink to="cart" className="text-xl">
+            <CustomLink
+              to="cart"
+              className="text-xl"
+              onClick={() => setShowLinks((prev) => !prev)}
+            >
               <div className="relative">
                 <FaShoppingCart />
                 {cart.length > 0 && (
