@@ -6,10 +6,10 @@
 .pnp.js
 /resources
 /src/photos
-/firebase
+/src/firebase
 # testing
 /coverage
-
+/.env
 # production
 
 
