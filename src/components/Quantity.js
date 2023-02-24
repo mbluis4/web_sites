@@ -17,6 +17,7 @@ const Quantity = ({ id }) => {
   useEffect(() => {
     addButton.current.classList.remove("clicked");
   }, [quantity]);
+  
   const handleClick = () => {
     addButton.current.classList.add("clicked");
     addToCart(id, Number(quantity));
