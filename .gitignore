@@ -9,7 +9,7 @@
 /src/firebase
 # testing
 /coverage
-/.env
+.env
 # production
 
 
